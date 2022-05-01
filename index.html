@@ -4,41 +4,224 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/c4a52d6955.js" crossorigin="anonymous"></script>
-    <title>MaxwellER - The place of the people</title>
-</head>
-<body>
-    <div class="banner">
-        <img src="images/banner.png" alt="" class="bannerimg">
-    </div>
 
-    <!-- <div class="topnav" id="navbar">
-        <a href="#home" class="active">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-        <a href="javascript:void(0);" class="icon" id="navbutton">
-          <i class="fa fa-bars"></i>
-        </a>
-      </div> -->
-      
-      <div style="padding-left:16px">
-        <h2>Today's topics</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed tempus purus. Aenean ac sem ut dolor efficitur sollicitudin. Vestibulum rhoncus, quam non vestibulum commodo, mi leo ullamcorper eros, facilisis facilisis justo libero non sapien. Nunc massa purus, malesuada in felis sed, facilisis efficitur dolor. Aliquam erat volutpat. Donec mollis dictum ex, ut congue dolor pharetra sed. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam ultricies turpis quis turpis vestibulum, vitae ultrices ligula euismod. Etiam scelerisque quis ante in cursus. In quis sem tincidunt, tristique sem ut, ornare orci. Aliquam vitae fringilla quam. Donec euismod elit metus, id blandit justo dapibus eget. Nulla vitae mollis libero, non eleifend est.</p>
-    </div>
+    <meta id="color-scheme" name="color-scheme" content="light">
+
+    <link id="bulma-import" rel="stylesheet" href="https://jenil.github.io/bulmaswatch/flatly/bulmaswatch.min.css"> <!-- Bulma -->
+    <link id="addons-import" rel="stylesheet" href="addon-light.css"> <!-- Addons -->
+    
+    <script src="https://kit.fontawesome.com/c4a52d6955.js" crossorigin="anonymous"></script> <!-- FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=BIZ+UDMincho&display=swap" rel="stylesheet"> Font -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>MaxwellER - The place of the people</title>
 
     <script>
-        function dropdownMenu() {
-          var x = document.getElementById("navbar");
-          if (x.className === "topnav") {
-            x.className += " responsive";
-          } else {
-            x.className = "topnav";
-          }
+        var lightThemeCss = "https://jenil.github.io/bulmaswatch/flatly/bulmaswatch.min.css";
+        var darkThemeCss = "https://jenil.github.io/bulmaswatch/darkly/bulmaswatch.min.css";
+
+        var lightAddonCss = "addon-light.css";
+        var darkAddonCss = "addon-dark.css";
+
+        var bulmaImport = document.getElementById("bulma-import");
+        var addonsImport = document.getElementById("addons-import");
+        var colorScheme = document.getElementById("color-scheme");
+
+        const theme = localStorage.getItem("theme");
+
+        setTheme(theme);
+
+        function setTheme(theme) {
+            if (theme == "light") {
+                bulmaImport.setAttribute('href', lightThemeCss);
+                addonsImport.setAttribute('href', lightAddonCss);
+                colorScheme.setAttribute('content', 'light');
+                localStorage.setItem("theme", "light");
+            } else if (theme == "dark") {
+                bulmaImport.setAttribute('href', darkThemeCss);
+                addonsImport.setAttribute('href', darkAddonCss);
+                colorScheme.setAttribute('content', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
         }
 
-        document.getElementById("navbutton").addEventListener("click", dropdownMenu);
+        function toggleTheme() {
+            if (colorScheme.getAttribute('content') == "light") {
+                setTheme("dark");
+            } else {
+                setTheme("light");
+            }
+        }
     </script>
+
+    <!-- <style>
+        body {
+            font-family: 'BIZ UDMincho', serif;
+        }
+    </style> -->
+</head>
+<body>
+    <!-- banner -->
+    <section class="section is-marginless is-paddingless banner-section">
+        <section class="hero is-black">
+            <div class="hero-body is-marginless is-paddingless">
+                <img src="images/banner.png" alt="" class="image banner">
+                <!-- <button class="button is-outlined" id="theme-button" onclick="toggleTheme()">
+                    Toggle Theme
+                </button> -->
+            </div>
+        </section>
+    </section>
+    <!-- content -->
+    <div class="block"></div>
+
+    <div>
+        <div class="columns is-mobile main-column">
+            <!-- Account -->
+            <div class="column is-3">
+                <div class="account-panel">
+                    <h1 class="title is-4 has-text-centered">Your account</h1>
+
+                    <div class="container is-fluid">
+                        <!-- Profile Picture & Name -->
+                        <article class="media">
+                            <figure class="media-left">
+                                <figure class="image is-128x128">
+                                    <img src="images/placeholder/profile-icon.png">
+                                </figure>
+                            </figure>
+                            <figure class="media-right">
+                                <h1 class="title is-2">
+                                    Maxwell
+                                </h1>
+                                <h1 class="title is-3 has-text-grey">
+                                    @maxwell
+                                </h1>
+                            </figure>
+                        </article>
+
+                        <!-- Stats -->
+                        <article class="media">
+                            <h1 class="title is-3 has-text-grey">
+                                0 followers
+                                <br>
+                                0 people like you
+                                <br>
+                                0 dislikes
+                                <br>
+                                0 posts made
+                            </h1>
+                        </article>
+
+                        <!-- Notifications -->
+                        <article class="media">
+                            <div class="level">
+                                <h1 class="title is-2">
+                                    You have:
+                                </h1>
+                            </div>
+                        </article>
+                        <div class="block"></div>
+                        <div id="notificationBox">
+                            <div class="notification">
+                                <button class="delete"></button>
+                                <a class="link" href="images/banner.png">
+                                    <div>
+                                        You have a new follower:
+                                        <br>
+                                        <strong>
+                                            Endercat
+                                        </strong>
+                                        <i class="has-text-grey">
+                                            @endercat126
+                                        </i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="block"></div>
+
+                    <div class="level is-align-self-flex-end is-size-5 is-size-7-mobile">
+                        <div class="level-item">
+                            <a href="#">Settings</a>
+                        </div>
+                        <p>-</p>
+                        <div class="level-item">
+                            <a href="#">Account</a>
+                        </div>
+                        <p>-</p>
+                        <div class="level-item">
+                            <a href="#">Logout</a>
+                        </div>
+                        <p>-</p>
+                        <div class="level-item">
+                            <a href="javascript:toggleTheme();">Theme</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="vertical-divider"></div>
+
+            <!-- Feed -->
+            <div class="column">
+                <div class="container is-fluid">
+                    <h1 class="title is-4 has-text-centered">Your feed</h1>
+                    <article class="media">
+                        <figure class="media-left">
+                            <p class="image is-64x64">
+                                <img class="is-rounded" src="images/placeholder/endercat.png">
+                            </p>
+                        </figure>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                <strong>Endercat</strong> <small>@endercat126</small> <small>31m</small>
+                                <br>
+                                    CAT FOOD
+                                </p>
+                            </div>
+                            <nav class="level is-mobile has-text-grey">
+                                <div class="level-left">
+                                <a class="level-item">
+                                    9999999999999 Likes,
+                                </a>
+                                
+                                <a class="level-item">
+                                    0 Dislikes,
+                                </a>
+                                <a class="level-item">
+                                    1 ReWeller
+                                </a>
+                                </div>
+                            </nav>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="vertical-divider"></div>
+
+            <!-- Topics -->
+            <div class="column is-3">
+                <h1 class="title is-4 has-text-centered">Today's Topics</h1>
+                <div class="topics-panel">
+                    <article class="media">
+                        <a href="#">
+                            <div class="media-content">
+                                <h1 class="title is-4">All Stocks bought by Maxwell today</h1>
+                                <img src="images/placeholder/topic-cover.png" class="image is-3by1 is-fullwidth is-marginless is-paddingless">
+                            </div>
+                        </a>
+                    </article>                    
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
